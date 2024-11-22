@@ -1,6 +1,6 @@
-import { formatTime } from "@/helpers/helpers";
+import { formatTime } from "@/helpers/";
 import { FC } from "react";
-import { Likes, Link, Tag, Time } from "../";
+import { Cover, Likes, Link, Paragraph, Tags, Title } from "..";
 import styles from "./card.module.css";
 import { CardProps } from "./card.props";
 
@@ -16,36 +16,38 @@ export const Card: FC<CardProps> = ({
 }) => {
     return (
         <article className={styles.article}>
-            <img className={styles.heading} src="./article-heading.png" alt="" />
+            <Cover src={"./article-heading.png"} />
 
             <section className={styles.main}>
                 <div className={styles.info}>
                     <div className={styles.infoLeftside}>
-                        {tags.map((tag) => (
-                                <Tag key={tag}>{tag}</Tag>
-                        ))}
+                        <Tags tags={tags} />
 
                         <span className={styles.divider} />
 
-                        <Time>{gapTime} {formatTime(gapTime, ["месяц", "месяца", "месяцев"])} назад</Time>
+                        <Paragraph size="s">
+                            {gapTime} {formatTime(gapTime, ["месяц", "месяца", "месяцев"])} назад
+                        </Paragraph>
                     </div>
 
                     <Likes>{likes}</Likes>
                 </div>
 
                 <div>
-                    <h3 className={styles.title}>
+                    <Title level={3} className={styles.title}>
                         {title}
-                    </h3>
+                    </Title>
 
-                    <p className={styles.description}>
+                    <Paragraph>
                         {description}
-                    </p>
+                    </Paragraph>
                 </div>
             </section>
 
             <section className={styles.footer}>
-                <Time>{readTime} {formatTime(readTime, ["минута", "минуты", "минут"])}</Time>
+                <Paragraph size="s">
+                    {readTime} {formatTime(readTime, ["минута", "минуты", "минут"])}
+                </Paragraph>
 
                 <Link href={href}>Читать</Link>
             </section>
