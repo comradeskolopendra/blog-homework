@@ -1,0 +1,7 @@
+.time {
+    display: inline-block;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--grey-light);
+}

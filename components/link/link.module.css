@@ -1,0 +1,10 @@
+.link {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 400;
+}

@@ -1,0 +1,8 @@
+.likes {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+}
