@@ -1,23 +1,29 @@
-import { FC } from "react";
-import styles from "./like-button.module.css";
+"use client";
+
+import { FC, useEffect, useState } from "react";
 import { LikeButtonProps } from "./like-button.props";
 
-import ActiveLikeIcon from "./active-like.svg";
-import InactveLikeIcon from "./inactive-like.svg";
+import { Button } from "./button/button";
 
-const LikeButton: FC<LikeButtonProps> = ({isLiked = false, setIsLiked, ...props}) => {
+export const LikeButton: FC<LikeButtonProps> = ({isLikedInitial = false, ...props}) => {
+    const [isLiked, setIsLiked] = useState(isLikedInitial);
 
     const handleClick = () => {
         setIsLiked(!isLiked);
     }
 
-    return (
-        <button className={styles.button} onClick={handleClick} {...props}>
-            {
-                isLiked ? <ActiveLikeIcon/> : <InactveLikeIcon/>
-            }
-        </button>
-    )
-};
+    useEffect(() => {
+        fetch("https://jsonplaceholder.typicode.com/posts/1", {
+          method: "PATCH",
+          body: JSON.stringify({isLiked})
+        }).then((resp) => {
+          if (resp.ok) {
+            return resp.json();
+          }
+        }).then((data) => {
+          console.log("data received")
+        })
+    }, [isLiked])
 
-export default LikeButton;
+    return <Button handleClick={handleClick} isLiked={isLiked} {...props} />
+};

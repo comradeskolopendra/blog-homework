@@ -1,0 +1,20 @@
+.main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+
+    gap: 16px;
+    padding: 0 36px;
+}
+
+@media screen and (max-width: 1024px) {
+    .main {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .main {
+        grid-template-columns: 1fr;
+    }
+}
