@@ -1,6 +1,6 @@
 // "use client"; // - это если компоненту нужна интерактивность, взаимодействией с клиентом напрямую.
 
-import { Card } from "@/components";
+import { Card, LikeButton } from "@/components";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -36,6 +36,8 @@ export default function Home() {
         readTime={3}
         href={"/"}
       />
+
+      <LikeButton isLikedInitial={false} />
     </main>
   );
 }
