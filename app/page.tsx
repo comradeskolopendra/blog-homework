@@ -1,7 +1,15 @@
 // "use client"; // - это если компоненту нужна интерактивность, взаимодействией с клиентом напрямую.
 
-import { Card, LikeButton } from "@/components";
+import { Card } from "@/components";
+import { Metadata } from "next";
 import styles from "./page.module.css";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "blog app",
+    description: "description of blog app"
+  }
+}
 
 export default function Home() {
 
@@ -37,7 +45,7 @@ export default function Home() {
         href={"/"}
       />
 
-      <LikeButton isLikedInitial={false} />
+      {/* <LikeButton isLikedInitial={false} /> */}
     </main>
   );
 }
