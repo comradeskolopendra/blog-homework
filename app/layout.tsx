@@ -1,11 +1,11 @@
+import { Header } from "@/components/header/header";
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
-import Link from "next/link";
 import { ReactNode } from "react";
 import "./global.css";
-import styles from "./layout.module.css";
 
-import GithubIcon from "./assets/github.svg";
+import AppContextProvider from "@/context/app.context";
+
 
 const openSans = Open_Sans({
   subsets: ["cyrillic", "latin"]
@@ -22,20 +22,14 @@ export interface RootLayoutProps {
   children: ReactNode;
 }
 
-export default function RootLayout({children}: Readonly<RootLayoutProps>) {
+export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
   return (
     <html lang="en">
       <body className={openSans.className}>
-        <header className={styles.header}>
-          <h1 className={styles.logo}>
-            skolopendrovskie dela
-          </h1>
-
-          <Link href={"https://github.com/comradeskolopendra"}>
-            <GithubIcon/>
-          </Link>
-        </header>
-        {children}
+        <AppContextProvider>
+          <Header />
+          {children}
+        </AppContextProvider>
       </body>
     </html>
   );
