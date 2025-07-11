@@ -21,7 +21,7 @@ export const LikeButton: FC<LikeButtonProps> = ({isLikedInitial = false, ...prop
             return resp.json();
           }
         }).then((data) => {
-          console.log("data received")
+          console.log(data)
         })
     }, [isLiked])
 

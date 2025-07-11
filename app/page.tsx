@@ -1,8 +1,15 @@
 // "use client"; // - это если компоненту нужна интерактивность, взаимодействией с клиентом напрямую.
 
-import { Card } from "@/components";
+import {Card} from "@/components";
 import { Metadata } from "next";
 import styles from "./page.module.css";
+
+interface IPostItem {
+    userId: number;
+    id: number;
+    title: string;
+    body: string;
+}
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -11,41 +18,24 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default function Home() {
+export default async function Home() {
+    const data = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const posts = await data.json();
 
   return (
     <main className={styles.main}>
-      <Card
-        description={"Грид-раскладка (CSS Grid Layout) представляет собой двумерную систему сеток в CSS. Гриды подойдут и для верстки основных областей страницы.."}
-        title={"Как работать с CSS Grid"}
-        tags={["Front-end"]}
-        gapTime={1}
-        likes={4}
-        readTime={3}
-        href={"/"}
-      />
-
-      <Card
-        description={"Грид-раскладка (CSS Grid Layout) представляет собой двумерную систему сеток в CSS. Гриды подойдут и для верстки основных областей страницы.."}
-        title={"Как работать с CSS Grid"}
-        tags={["Front-end"]}
-        gapTime={1}
-        likes={4}
-        readTime={3}
-        href={"/"}
-      />
-
-      <Card
-        description={"Грид-раскладка (CSS Grid Layout) представляет собой двумерную систему сеток в CSS. Гриды подойдут и для верстки основных областей страницы.."}
-        title={"Как работать с CSS Grid"}
-        tags={["Front-end"]}
-        gapTime={1}
-        likes={4}
-        readTime={3}
-        href={"/"}
-      />
-
-      {/* <LikeButton isLikedInitial={false} /> */}
+        {posts.map((post: IPostItem) => (
+            <Card
+                key={"post-" + post.id}
+                title={post.title}
+                description={post.body}
+                tags={["Front-end"]}
+                gapTime={1}
+                likes={4}
+                readTime={3}
+                href={`/post/${post.id}`}
+            />
+        ))}
     </main>
   );
 }

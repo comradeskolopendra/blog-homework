@@ -4,7 +4,6 @@ import { Cover, Likes, Link, Paragraph, Tags, Title } from "..";
 import styles from "./card.module.css";
 import { CardProps } from "./card.props";
 
-
 export const Card: FC<CardProps> = ({
     description,
     gapTime,
@@ -16,7 +15,7 @@ export const Card: FC<CardProps> = ({
 }) => {
     return (
         <article className={styles.article}>
-            <Cover src={"./article-heading.png"} />
+            <Cover src={"./article-heading.png"} alt={"test"} />
 
             <section className={styles.main}>
                 <div className={styles.info}>
