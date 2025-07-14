@@ -1,0 +1,32 @@
+.post {
+    padding: 0 36px;
+}
+
+.headingImage {
+    width: 50%;
+}
+
+.headerInfo {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+.divider {
+    display: inline-block;
+    width: 2px;
+    height: 2px;
+    background-color: var(--grey-light);
+    border-radius: 50%;
+}
+
+.body {
+    margin-top: 35px;
+}
+
+.title {
+    margin-bottom: 20px;
+}

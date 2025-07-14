@@ -31,9 +31,9 @@ export default function RootLayout({children}: Readonly<RootLayoutProps>) {
             skolopendrovskie dela
           </h1>
 
-          <Link href={"https://github.com/comradeskolopendra"}>
+          <a href={"https://github.com/comradeskolopendra"}>
             <GithubIcon/>
-          </Link>
+          </a>
         </header>
         {children}
       </body>
