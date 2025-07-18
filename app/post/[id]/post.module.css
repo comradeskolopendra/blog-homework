@@ -30,3 +30,41 @@
 .title {
     margin-bottom: 20px;
 }
+
+.like {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    margin: 20px 0;
+}
+
+.comments {
+    max-width: 50%;
+    margin-top: 25px;
+}
+
+.comment {
+    margin-bottom: 20px;
+}
+
+.commentHead {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 5px;
+}
+
+.name {
+    color: var(--black);
+    font-weight: bold;
+}
+
+.commentBody {
+    color: var(--black);
+    line-height: 150%;
+    font-size: 18px;
+}

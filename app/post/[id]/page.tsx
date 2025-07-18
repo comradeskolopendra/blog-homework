@@ -1,8 +1,9 @@
 import {FC} from "react";
-import {Likes, Paragraph, Tags, Title} from "@/components";
+import {LikeButton, Likes, Paragraph, Tags, Title} from "@/components";
 
 import styles from "./post.module.css";
 import {formatTime} from "@/helpers";
+import {ICommentItem, IPostItem} from "@/types/types";
 
 interface ArticleProps {
     params: Promise<{id: string}>
@@ -11,13 +12,18 @@ interface ArticleProps {
 const Article: FC<ArticleProps> = async ({params}) => {
     const {id} = await params;
 
-    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-    const data = await response.json();
+    const postResponse = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    const post: IPostItem = await postResponse.json();
+
+    const commentsResponse = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${id}`);
+    const comments: ICommentItem[] = await commentsResponse.json()
+
+    console.log(comments);
 
     return (
         <main className={styles.post}>
             <div className={styles.heading}>
-                <Title level={1} className={styles.title}>{data.title}</Title>
+                <Title level={1} className={styles.title}>{post.title}</Title>
 
                 <div className={styles.headerInfo}>
                     <Tags tags={["Front-end"]}/>
@@ -42,7 +48,32 @@ const Article: FC<ArticleProps> = async ({params}) => {
 
             <img className={styles.headingImage} src={"/article-heading.png"} alt={"article heading image"}/>
 
-            <div className={styles.body} dangerouslySetInnerHTML={{__html: data.body}}/>
+            <div className={styles.body} dangerouslySetInnerHTML={{__html: post.body}}/>
+
+            <div className={styles.like}>
+                <Paragraph size={"m"}>Понравилось? Жми</Paragraph>
+                <LikeButton/>
+            </div>
+
+            <div className={styles.commentsBlock}>
+                <Title level={2}>
+                    Комменатрии
+                </Title>
+
+                <div className={styles.comments}>
+                    {comments.map((comment) => (
+                        <div className={styles.comment} key={`${comment.email}-${comment.id}`}>
+                            <div className={styles.commentHead}>
+                                <Paragraph className={styles.name}>{comment.name}</Paragraph>
+                                <span className={styles.divider}/>
+                                <Paragraph>{comment.email}</Paragraph>
+                            </div>
+
+                            <Paragraph className={styles.commentBody} size={"m"}>{comment.body}</Paragraph>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </main>
     )
 };

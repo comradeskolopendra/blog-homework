@@ -3,13 +3,7 @@
 import {Card} from "@/components";
 import { Metadata } from "next";
 import styles from "./page.module.css";
-
-interface IPostItem {
-    userId: number;
-    id: number;
-    title: string;
-    body: string;
-}
+import {IPostItem} from "@/types/types";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
