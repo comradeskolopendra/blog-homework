@@ -1,0 +1,31 @@
+.divider {
+    display: inline-block;
+    width: 2px;
+    height: 2px;
+    background-color: var(--grey-light);
+    border-radius: 50%;
+}
+
+.comment {
+    margin-bottom: 20px;
+}
+
+.commentHead {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 5px;
+}
+
+.name {
+    color: var(--black);
+    font-weight: bold;
+}
+
+.commentBody {
+    color: var(--black);
+    line-height: 150%;
+    font-size: 18px;
+}

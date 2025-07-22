@@ -4,6 +4,9 @@ import {LikeButton, Likes, Paragraph, Tags, Title} from "@/components";
 import styles from "./post.module.css";
 import {formatTime} from "@/helpers";
 import {ICommentItem, IPostItem} from "@/types/types";
+import Image from "next/image";
+import {Comment} from "@/app/post/[id]/_components/comment/comment";
+import {Form} from "@/app/post/[id]/_components/form/form";
 
 interface ArticleProps {
     params: Promise<{id: string}>
@@ -18,7 +21,6 @@ const Article: FC<ArticleProps> = async ({params}) => {
     const commentsResponse = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${id}`);
     const comments: ICommentItem[] = await commentsResponse.json()
 
-    console.log(comments);
 
     return (
         <main className={styles.post}>
@@ -46,7 +48,7 @@ const Article: FC<ArticleProps> = async ({params}) => {
                 </div>
             </div>
 
-            <img className={styles.headingImage} src={"/article-heading.png"} alt={"article heading image"}/>
+            <Image width={800} height={500} src={"/article-heading.png"} alt={"article heading image"} quality={100} />
 
             <div className={styles.body} dangerouslySetInnerHTML={{__html: post.body}}/>
 
@@ -62,18 +64,12 @@ const Article: FC<ArticleProps> = async ({params}) => {
 
                 <div className={styles.comments}>
                     {comments.map((comment) => (
-                        <div className={styles.comment} key={`${comment.email}-${comment.id}`}>
-                            <div className={styles.commentHead}>
-                                <Paragraph className={styles.name}>{comment.name}</Paragraph>
-                                <span className={styles.divider}/>
-                                <Paragraph>{comment.email}</Paragraph>
-                            </div>
-
-                            <Paragraph className={styles.commentBody} size={"m"}>{comment.body}</Paragraph>
-                        </div>
+                        <Comment comment={comment}  key={`${comment.email}-${comment.id}`} />
                     ))}
                 </div>
             </div>
+
+            <Form/>
         </main>
     )
 };

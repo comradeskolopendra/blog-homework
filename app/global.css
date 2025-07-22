@@ -1,11 +1,14 @@
 :root {
     --black: #2C2C2C;
+    --black-hover: #2c2c2;
+
     --grey: #4B4B4B;
     --grey-light: #6E6E6E;
 
     --blue: #1473E6;
+    --red: #F44336;
 
-    --border: #F5F5F5
+    --border: #F5F5F5;
 }
 
 body {

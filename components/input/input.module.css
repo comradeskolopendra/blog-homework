@@ -1,0 +1,35 @@
+.input {
+    width: 100%;
+
+    border: 1px solid var(--border);
+    border-radius: 5px;
+
+    padding: 10px 20px;
+
+    font-family: inherit;
+
+    box-sizing: border-box;
+}
+
+.wrapper {
+    width: 100%;
+    position: relative;
+}
+
+.input::placeholder {
+    font-family: inherit;
+}
+
+.message {
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+
+    color: var(--red);
+
+    font-size: 12px;
+}
+
+.error {
+    border: 1px solid var(--red);
+}

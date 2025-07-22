@@ -1,0 +1,18 @@
+.form {
+    display: grid;
+    grid-template-columns: [start] auto [middle] auto [end];
+
+    gap: 20px;
+
+    max-width: 500px;
+
+    margin-top: 40px;
+}
+
+.input, .textarea {
+    grid-column: start / end
+}
+
+.button {
+    grid-column: start / middle;
+}
