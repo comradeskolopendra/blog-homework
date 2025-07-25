@@ -1,10 +1,13 @@
+"use client";
+
 import { formatTime } from "@/helpers/";
-import { FC } from "react";
 import { Cover, Likes, Link, Paragraph, Tags, Title } from "..";
 import styles from "./card.module.css";
 import { CardProps } from "./card.props";
+import {motion, useAnimation} from "motion/react";
+import {useEffect} from "react";
 
-export const Card: FC<CardProps> = ({
+export const Card = motion.create<CardProps>(({
     description,
     gapTime,
     likes,
@@ -13,8 +16,32 @@ export const Card: FC<CardProps> = ({
     title,
     href
 }) => {
+    const controls = useAnimation()
+
+    const variants = {
+        "hidden": {
+            y: 100,
+            opacity: 0,
+        },
+        "visible": {
+            y: 0,
+            opacity: 1,
+        }
+    }
+
+    useEffect(() => {
+        if (controls) {
+            controls.start("visible")
+        }
+    }, [controls]);
+
     return (
-        <article className={styles.article}>
+        <motion.article
+            animate={controls}
+            variants={variants}
+            initial={"hidden"}
+            className={styles.article}
+        >
             <Cover src={"./article-heading.png"} alt={"test"} />
 
             <section className={styles.main}>
@@ -50,6 +77,6 @@ export const Card: FC<CardProps> = ({
 
                 <Link href={href}>Читать</Link>
             </section>
-        </article>
+        </motion.article>
     )
-};
+});
