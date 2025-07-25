@@ -26,6 +26,10 @@ export const Card = motion.create<CardProps>(({
         "visible": {
             y: 0,
             opacity: 1,
+            transition: {
+                duration: 0.4,
+                ease: "easeInOut"
+            }
         }
     }
 
