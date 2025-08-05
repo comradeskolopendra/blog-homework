@@ -25,5 +25,5 @@ export const LikeButton: FC<LikeButtonProps> = ({isLikedInitial = false, ...prop
         })
     }, [isLiked])
 
-    return <Button handleClick={handleClick} isLiked={isLiked} {...props} />
+    return <Button handleClick={handleClick} isLiked={isLiked} aria-label={"Поставить лайк"} {...props}/>
 };
