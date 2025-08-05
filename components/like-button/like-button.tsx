@@ -7,8 +7,10 @@ import { Button } from "./button/button";
 
 export const LikeButton: FC<LikeButtonProps> = ({isLikedInitial = false, ...props}) => {
     const [isLiked, setIsLiked] = useState(isLikedInitial);
+    const [log, setLog] = useState<"set" | "unset">("unset");
 
     const handleClick = () => {
+        setLog(prevState => prevState === "set" ? "unset" : "set");
         setIsLiked(!isLiked);
     }
 
@@ -25,5 +27,10 @@ export const LikeButton: FC<LikeButtonProps> = ({isLikedInitial = false, ...prop
         })
     }, [isLiked])
 
-    return <Button handleClick={handleClick} isLiked={isLiked} aria-label={"Поставить лайк"} {...props}/>
+    return (
+        <>
+            <span className={"visuallyHidden"} role={"log"}>{log === "set" ? "Поставлено" : "Убрано"}</span>
+            <Button handleClick={handleClick} isLiked={isLiked} aria-label={isLiked ? "Убрать лайк" :"Поставить лайк"} {...props}/>
+        </>
+    )
 };
