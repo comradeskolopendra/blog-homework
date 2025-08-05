@@ -48,7 +48,7 @@ const Article: FC<ArticleProps> = async ({params}) => {
                 </div>
             </div>
 
-            <Image width={800} height={500} src={"/article-heading.png"} alt={"article heading image"} quality={100} />
+            <Image width={800} height={500} src={"/article-heading.png"} alt={`Картинка для заголовка ${post.title}`} quality={100} />
 
             <div className={styles.body} dangerouslySetInnerHTML={{__html: post.body}}/>
 

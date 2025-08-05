@@ -30,15 +30,19 @@ export const Form = () => {
                 error={errors.name}
                 placeholder={"Имя"}
                 className={styles.input}
+                aria-label={"Введите имя"}
+                aria-invalid={!!errors.name}
             />
             <Textarea
                 {...register("description", {required: { value: true, message: "Обязательное поле" }})}
                 error={errors.description}
                 placeholder={"Описание"}
+                aria-label={"Введите комментарий"}
+                aria-invalid={!!errors.description}
                 className={styles.textarea}
             />
 
-            <Button className={styles.button}>Отправить</Button>
+            <Button className={styles.button} aria-label={"Отправить комментарий"}>Отправить</Button>
         </form>
     )
 };

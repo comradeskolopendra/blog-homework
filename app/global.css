@@ -14,3 +14,13 @@
 body {
     margin: 0;
 }
+
+.visuallyHidden {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+
+    width: 0;
+    height: 0;
+}

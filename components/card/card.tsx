@@ -22,6 +22,10 @@ export const Card = motion.create<CardProps>(({
         "hidden": {
             y: 100,
             opacity: 0,
+            transition: {
+                duration: 0.4,
+                ease: "easeInOut"
+            }
         },
         "visible": {
             y: 0,
@@ -79,7 +83,7 @@ export const Card = motion.create<CardProps>(({
                     {readTime} {formatTime(readTime, ["минута", "минуты", "минут"])}
                 </Paragraph>
 
-                <Link href={href}>Читать</Link>
+                <Link href={href} aria-label={"Перейти к статье"}>Читать</Link>
             </section>
         </motion.article>
     )

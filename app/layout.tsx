@@ -31,7 +31,7 @@ export default function RootLayout({children}: Readonly<RootLayoutProps>) {
             skolopendrovskie dela
           </h1>
 
-          <a href={"https://github.com/comradeskolopendra"}>
+          <a href={"https://github.com/comradeskolopendra"} aria-label={"Гитхаб comradeskolopendra"} target={"_blank"} rel="noopener noreferrer">
             <GithubIcon/>
           </a>
         </header>
